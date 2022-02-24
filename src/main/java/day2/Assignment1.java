@@ -7,15 +7,23 @@ import java.util.TreeSet;
 public class Assignment1 {
 
     public static void main(String [] args) {
+        // test 13
         testInput();
 
+        // test 14
         int [] a = new int[]{-6,-2,-3,-4,-5,-1};
         int [] b = new int[]{1,2,3,4,5,6,7};
 
         int [] newAB = merge2Arrays(a,b);
-        System.out.println(newAB.toString());
+        System.out.println("New Merged Array");
+        for(int ab : newAB) {
+            System.out.print(ab + " ");
+        }
+        System.out.println();
 
-        System.out.println(findSecond(a));
+        // test 15
+        System.out.println("Array a: second largest: " + findSecond(a));
+        System.out.println("Array b: second largest: " + findSecond(b));
     }
 
     // 13. write a program for the following activity
