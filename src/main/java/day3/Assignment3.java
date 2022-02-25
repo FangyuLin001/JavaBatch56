@@ -69,21 +69,25 @@ public class Assignment3 {
         myDog.sleep();
 
         List<Rectangle> list = new ArrayList<>();
-        Rectangle reg1 = new Rectangle(1.14,3.59, 2.6);
-        Rectangle reg2 = new Rectangle(2.14,2.59, 2.6);
-        Rectangle reg3 = new Rectangle(3.14,1.59, 2.6);
-        list.add(reg1);
-        list.add(reg2);
-        list.add(reg3);
-        reg1.incrementLength();
-        reg1.incrementWidth();
-        double area1 = reg1.area();
-        double perimeter = reg1.perimeter();
-        double hashV = reg1.hashValue();
-        double ratioR = reg1.ratio();
+        double width = 1.14;
+        double length = 3.59;
+        double depth = 2.61;
+        for(int m = 0; m < i; m++) {
+            Rectangle reg = new Rectangle(width, length, depth);
+            list.add(reg);
+            width += 0.7;
+            length += 0.5;
+            depth += 0.3;
+        }
+        list.get(0).incrementLength();
+        list.get(0).incrementWidth();
+        double area1 = list.get(0).area();
+        double perimeter = list.get(0).perimeter();
+        double hashV = list.get(0).hashValue();
+        double ratioR = list.get(0).ratio();
         System.out.println("Area: " + area1 + " and ratio:  " + ratioR);
         System.out.println("Perimeter: " + perimeter + " and hashValue: " + hashV);
-        assert list.get(new Random().nextInt(2)) != null && list.get(new Random().nextInt(2)) instanceof Shape;
+        assert list.get(new Random().nextInt(i-1)) != null && list.get(new Random().nextInt(i-1)) instanceof Shape;
     }
 
     private static int test1(int a, int b) throws NullPointerException {
@@ -120,16 +124,21 @@ public class Assignment3 {
     }
 
     static class Rectangle extends Shape {
-        private double width, length;
+        private double width, length, optional;
 
         Rectangle(double width, double length, double optional) {
             super();
             this.width = width;
             this.length = length;
+            this.optional = optional;
         }
 
         protected double area(){
             return width * length;
+        }
+
+        protected double area(double optional) {
+            return optional * width * length;
         }
 
         protected double perimeter() {
