@@ -25,8 +25,14 @@ public class Assignment3 {
         Circle circle2 = new Circle(random.nextDouble());
         System.out.println("Comparing 2 circles: " + circle1.compareTo(circle2));
 
+        Square square1 = new Square(random.nextDouble());
+        Square square2 = new Square(random.nextDouble());
+        System.out.println("Comparing 2 squares: " + square1.compareTo(square2));
+
         System.out.println("Comparing rectangles1 with circle1 : " + circle1.compareTo(reg1));
         System.out.println("Comparing rectangles2 with circle2 : " + reg2.compareTo(circle2));
+        System.out.println("Comparing square1 with circle1 : " + square1.compareTo(circle1));
+        System.out.println("Comparing square2 with rectangle2 : " + square2.compareTo(reg2));
     }
 
     /**
@@ -89,6 +95,30 @@ public class Assignment3 {
         @Override
         public int compareTo(Object circle) {
             double t = this.area() - ((Shape)circle).area();
+            if(t > 0.0) {
+                return 1;
+            } else if(t == 0.00000000) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+    }
+
+    static class Square extends Shape {
+        double length;
+
+        Square(double length){
+            this.length = length;
+        }
+
+        public double area() {
+            return Math.pow(length, 2.0);
+        }
+
+        @Override
+        public int compareTo(Object square) {
+            double t = this.area() - ((Shape)square).area();
             if(t > 0.0) {
                 return 1;
             } else if(t == 0.00000000) {
